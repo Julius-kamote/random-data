@@ -30,7 +30,7 @@ function DisplayData() {
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
 
-      console.log("Data Detailssssssssss: ", email + "|" + title, first, last);
+      console.log("Random Data Details: ", email + "|" + title, first, last);
     } catch (err) {
       console.log(err);
     }
