@@ -12,14 +12,19 @@ const url = "https://randomuser.me/api";
 
 function DisplayData() {
   const [data, setData] = useState<dataType[] | any>([]);
+  const [load, setLoad] = useState(false);
 
   const getData = async () => {
+    setLoad(true);
     try {
       const res = await axios.get(url);
+
+      console.log("LLLLLLLLLLLLLL", load);
       const {
         email,
         name: { title, first, last },
       } = res.data.results[0];
+      setLoad(false);
 
       localStorage.setItem(
         "person-data",
@@ -42,8 +47,14 @@ function DisplayData() {
 
   return (
     <div className="content">
-      <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
-      <p className="email">{`${data.email} `}</p>
+      {load ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        <>
+          <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
+          <p className="email">{`${data.email} `}</p>
+        </>
+      )}
       <button
         className="btn"
         onClick={() => {

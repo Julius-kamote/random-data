@@ -16,6 +16,12 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.loading {
+  color: rgb(255, 157, 157);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 .name {
   color: #ffffff;
   font-weight: 400;
