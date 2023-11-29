@@ -42,19 +42,23 @@ function DisplayData() {
   };
 
   useEffect(() => {
-    getData();
+    return () => {
+      getData();
+    };
   }, []);
 
   return (
-    <div className="content">
-      {load ? (
-        <p className="loading">Loading...</p>
-      ) : (
-        <>
-          <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
-          <p className="email">{`${data.email} `}</p>
-        </>
-      )}
+    <div>
+      <div className="content">
+        {load ? (
+          <p className="loading">Loading...</p>
+        ) : (
+          <>
+            <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
+            <p className="email">{`${data.email} `}</p>
+          </>
+        )}
+      </div>
       <button
         className="btn"
         onClick={() => {

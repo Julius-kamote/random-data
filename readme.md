@@ -1,4 +1,4 @@
-# Random Data Name.
+# Random Data Name - Vite | React js | Typescript | Axios
 
 How to install and start the application.
 
