@@ -61,7 +61,7 @@ function DisplayData() {
           getData();
         }}
       >
-        Random Name
+        Get Random Name
       </button>
     </div>
   );
