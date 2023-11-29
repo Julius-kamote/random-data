@@ -42,7 +42,6 @@ function DisplayData() {
 
   return (
     <div className="content">
-      {data == null ? "loading" : "yes"}
       <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
       <p className="email">{`${data.email} `}</p>
       <button
