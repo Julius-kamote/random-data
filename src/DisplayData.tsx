@@ -19,7 +19,6 @@ function DisplayData() {
     try {
       const res = await axios.get(url);
 
-      console.log("LLLLLLLLLLLLLL", load);
       const {
         email,
         name: { title, first, last },
