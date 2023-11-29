@@ -42,9 +42,7 @@ function DisplayData() {
   };
 
   useEffect(() => {
-    return () => {
-      getData();
-    };
+    return () => getData();
   }, []);
 
   return (
