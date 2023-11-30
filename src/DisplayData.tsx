@@ -26,17 +26,17 @@ function DisplayData() {
       } = res.data.results[0];
       setLoad(false);
 
-      localStorage.setItem(
-        "api-data",
-        JSON.stringify({ email, title, first, last })
-      );
-
-      setSave([...save, data]);
-      localStorage.setItem("save-data", JSON.stringify(save));
+      localStorage.setItem("saved-data", JSON.stringify(save));
+      setSave([...save, { email, title, first, last }]);
 
       const getUser = localStorage.getItem("api-data");
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
+
+      localStorage.setItem(
+        "api-data",
+        JSON.stringify({ email, title, first, last })
+      );
 
       console.log("Random Data Details: ", email + "|" + title, first, last);
     } catch (err) {
