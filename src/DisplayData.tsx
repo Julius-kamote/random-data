@@ -34,7 +34,7 @@ function DisplayData() {
         JSON.stringify({ email, title, first, last })
       );
 
-      const getUser = localStorage.getItem("save-data");
+      const getUser = localStorage.getItem("person-data");
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
 
