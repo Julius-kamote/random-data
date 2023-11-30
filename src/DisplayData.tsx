@@ -26,6 +26,9 @@ function DisplayData() {
       } = res.data.results[0];
       setLoad(false);
 
+      setSave([...save, data]);
+      localStorage.setItem("random-data", JSON.stringify(save));
+
       localStorage.setItem(
         "person-data",
         JSON.stringify({ email, title, first, last })
@@ -34,10 +37,6 @@ function DisplayData() {
       const getUser = localStorage.getItem("person-data");
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
-
-      setSave([...save, data]);
-      localStorage.setItem("random-data", JSON.stringify(save));
-      console.log("TTTTTTT", save);
 
       console.log("Random Data Details: ", email + "|" + title, first, last);
     } catch (err) {
