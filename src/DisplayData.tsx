@@ -13,9 +13,11 @@ const url = "https://randomuser.me/api";
 function DisplayData() {
   const [data, setData] = useState<dataType[] | any>([]);
   const [load, setLoad] = useState(false);
+  const [start, setStart] = useState(true);
   const [save, setSave] = useState<dataType[] | any>([]);
 
   const getData = async () => {
+    console.log("RRRRRRRRRR", start);
     setLoad(true);
     try {
       const res = await axios.get(url);
@@ -26,9 +28,6 @@ function DisplayData() {
       } = res.data.results[0];
       setLoad(false);
 
-      localStorage.setItem("saved-data", JSON.stringify(save));
-      setSave([...save, { email, title, first, last }]);
-
       const getUser = localStorage.getItem("api-data");
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
@@ -37,6 +36,9 @@ function DisplayData() {
         "api-data",
         JSON.stringify({ email, title, first, last })
       );
+
+      localStorage.setItem("saved-data", JSON.stringify(save));
+      setSave([...save, { email, title, first, last }]);
 
       console.log("Random Data Details: ", email + "|" + title, first, last);
     } catch (err) {
@@ -51,12 +53,18 @@ function DisplayData() {
   return (
     <div>
       <div className="content">
-        {load ? (
-          <p className="loading">Loading...</p>
+        {start ? (
+          <p className="start">Click to get random data</p>
         ) : (
           <>
-            <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
-            <p className="email">{`${data.email} `}</p>
+            {load ? (
+              <p className="loading">Loading...</p>
+            ) : (
+              <>
+                <h1 className="name">{`${data.title} ${data.first} ${data.last}`}</h1>
+                <p className="email">{`${data.email} `}</p>
+              </>
+            )}
           </>
         )}
       </div>
@@ -64,6 +72,7 @@ function DisplayData() {
         className="btn"
         onClick={() => {
           getData();
+          setStart(false);
         }}
       >
         Get Random Name
