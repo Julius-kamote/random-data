@@ -7,4 +7,4 @@ How to install and start the application.
 3. Open terminal and type npm i or npm install to install all dependencies.
 4. Type npm run dev on terminal to start the application.
 
-Go to local storage and click saved-data to see all data when you click the button
+Go to local storage and click 'saved-data' to view every saved data when clicked the button.

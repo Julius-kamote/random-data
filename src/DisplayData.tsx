@@ -17,7 +17,6 @@ function DisplayData() {
   const [save, setSave] = useState<dataType[] | any>([]);
 
   const getData = async () => {
-    console.log("RRRRRRRRRR", start);
     setLoad(true);
     try {
       const res = await axios.get(url);
