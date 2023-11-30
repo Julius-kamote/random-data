@@ -26,15 +26,15 @@ function DisplayData() {
       } = res.data.results[0];
       setLoad(false);
 
-      setSave([...save, data]);
-      localStorage.setItem("random-data", JSON.stringify(save));
-
       localStorage.setItem(
-        "person-data",
+        "api-data",
         JSON.stringify({ email, title, first, last })
       );
 
-      const getUser = localStorage.getItem("person-data");
+      setSave([...save, data]);
+      localStorage.setItem("save-data", JSON.stringify(save));
+
+      const getUser = localStorage.getItem("api-data");
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
 
