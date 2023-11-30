@@ -13,6 +13,7 @@ const url = "https://randomuser.me/api";
 function DisplayData() {
   const [data, setData] = useState<dataType[] | any>([]);
   const [load, setLoad] = useState(false);
+  const [save, setSave] = useState<dataType[] | any>([]);
 
   const getData = async () => {
     setLoad(true);
@@ -33,6 +34,10 @@ function DisplayData() {
       const getUser = localStorage.getItem("person-data");
       const userData = getUser !== null ? JSON.parse(getUser) : [];
       setData(userData);
+
+      setSave([...save, data]);
+      localStorage.setItem("random-data", JSON.stringify(save));
+      console.log("TTTTTTT", save);
 
       console.log("Random Data Details: ", email + "|" + title, first, last);
     } catch (err) {
